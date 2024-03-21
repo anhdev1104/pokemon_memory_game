@@ -1,0 +1,207 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primaty-color: #fe2c55;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    background-image: linear-gradient(to top right, rgba(44, 202, 255, 0.767), rgba(106, 90, 249, 0.826));
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // overflow: hidden;
+}
+
+#app {
+    // min-height: 100vh;
+    width: 100%;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 100px;
+
+    &-block {
+        width: 700px;
+        border-radius: 18px;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 20px 60px;
+
+        h1 {
+            color: #f62682;
+        }
+
+        &-form {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: start;
+
+            label {
+                cursor: pointer;
+            }
+            input {
+                width: 100%;
+                padding: 14px 26px;
+                border: 1px solid #dbdbdb;
+                border-radius: 6px;
+                outline: none;
+            }
+            input.error {
+                border-color: #fe2c55;
+            }
+            button {
+                padding: 12px 50px;
+                text-align: center;
+                margin: 0 auto;
+                cursor: pointer;
+                background-color: #2cccff;
+                color: #fff;
+                border: none;
+                outline: none;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+
+.error-message {
+    margin-bottom: 40px;
+    font-size: 1.4rem;
+    color: #fe2c55;
+    padding-left: 10px;
+}
+
+// handle logic game
+.game {
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+
+    &-control {
+        width: 400px;
+        margin-left: 80px;
+
+        &-wrap {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: 18px;
+            margin-bottom: 80px;
+        }
+
+        &-wrap span:last-child {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        &-wrap button {
+            padding: 12px 24px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: #20e3b2;
+            color: #fff;
+            border-radius: 6px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            transition: all linear 0.25s;
+            &:hover {
+                background-color: #50f5cc;
+            }
+        }
+
+        &-wrap button:last-child {
+            background-color: #fe2c55 !important;
+
+            &:hover {
+                background-color: #fd597a !important;
+            }
+        }
+    }
+}
+.grid {
+    max-width: 660px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card {
+    margin: 5px;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 150px;
+    width: 150px;
+}
+
+.card.matched {
+    border: 0;
+    background-image: none !important;
+    pointer-events: none;
+}
+
+.card {
+    position: relative;
+    transition: all 0.4s linear;
+    transform-style: preserve-3d;
+    background: none !important;
+}
+
+.card,
+.back,
+.front {
+    height: 150px;
+    width: 150px;
+}
+
+.back,
+.front {
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.front {
+    background: transparent url('./src/img/quacaupokemon.png') no-repeat center center / contain;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.selected {
+    transform: rotateY(180deg);
+}
+
+.matched .front {
+    background: transparent !important;
+}
